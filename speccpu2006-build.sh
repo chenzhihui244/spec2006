@@ -8,6 +8,7 @@ if [ -n $(which yum) ]; then
 	#yum install -y gcc*
 	yum install -y gcc
 	yum install -y gcc-c++
+	yum install -y gcc-gfortran
 	yum install -y libgfortran
 	#yum install -y *cmp
 	#yum install -y cmp*
