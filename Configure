@@ -1322,6 +1322,7 @@ test -f /usr/shlib/libc.so && glibpth="/usr/shlib $glibpth"
 test -f /shlib/libc.so     && glibpth="/shlib $glibpth"
 test -d /usr/lib64         && glibpth="$glibpth /lib64 /usr/lib64 /usr/local/lib64"
 test -d /lib/x86_64-linux-gnu && glibpth="$glibpth /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu"
+test -d /lib/aarch64-linux-gnu && glibpth="$glibpth /lib/aarch64-linux-gnu /usr/lib/aarch64-linux-gnu"
 
 : Private path used by Configure to find libraries.  Its value
 : is prepended to libpth. This variable takes care of special
