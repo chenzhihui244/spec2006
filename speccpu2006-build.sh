@@ -17,7 +17,7 @@ fi
 if [ -n $(which apt-get) ]; then
 	apt-get install -y automake
 	apt-get install -y numactl
-	apt-get install -y gcc*
+	#apt-get install -y gcc*
 	apt-get install -y libgfortran-5-dev
 	#apt-get install -y *cmp
 	#apt-get install -y cmp*
