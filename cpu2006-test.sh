@@ -5,6 +5,11 @@ iso_mnt=/mnt
 
 cpu2006_dir=cpu2006
 
+install_depency_ubuntu() {
+	apt install build-essential
+	apt install m4
+}
+
 mount | grep -q "$iso_file" > /dev/null 2>&1
 if [ ! $? -eq 0 ]; then
 	mount $iso_file $iso_mnt
@@ -12,6 +17,10 @@ fi
 
 [ -d $cpu2006_dir ] || {
 	mkdir $cpu2006_dir && cp -a $iso_mnt/* $cpu2006_dir
+
+	# replace make
+	rm -rf $cpu2006_dir/tools/src/make-3.82
+	tar xf make.tar.gz -C $cpu2006_dir/tools/src/
 }
 
 # replace config.guess
@@ -52,6 +61,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 [ -f $cpu2006_dir/config/ts2280-2cpu.cfg ] || cp ts2280-2cpu.cfg $cpu2006_dir/config/
+[ -f $cpu2006_dir/config/d06-2cpu.cfg ] || cp d06-2cpu.cfg $cpu2006_dir/config/
 [ -f $cpu2006_dir/config/flags/ts2280-gcc4x-flags.xml ] || cp ts2280-gcc4x-flags.xml $cpu2006_dir/config/flags/
 
 build_test() {
